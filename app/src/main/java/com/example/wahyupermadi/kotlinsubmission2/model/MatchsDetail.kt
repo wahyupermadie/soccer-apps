@@ -17,5 +17,8 @@ data class MatchsDetail(
         var strAwayLineupForward: String,
         var strAwayLineupSubstitutes: String,
         var idHomeTeam : String,
-        var idAwayTeam : String
+        var idAwayTeam : String,
+        var intAwayScore: String,
+        var intHomeScore: String,
+        var dateEvent : String
 )
