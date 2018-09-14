@@ -1,0 +1,21 @@
+package com.example.wahyupermadi.kotlinsubmission2.model
+
+data class MatchsDetail(
+        var idEvent : String,
+        var strHomeTeam : String,
+        var strAwayTeam : String,
+        var intHomeShots : String,
+        var intAwayShots : String,
+        var strHomeLineupGoalkeeper : String,
+        var strHomeLineupDefense: String,
+        var strHomeLineupMidfield: String,
+        var strHomeLineupForward: String,
+        var strHomeLineupSubstitutes: String,
+        var strAwayLineupGoalkeeper : String,
+        var strAwayLineupDefense: String,
+        var strAwayLineupMidfield: String,
+        var strAwayLineupForward: String,
+        var strAwayLineupSubstitutes: String,
+        var idHomeTeam : String,
+        var idAwayTeam : String
+)
