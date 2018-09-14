@@ -1,6 +1,8 @@
 package com.example.wahyupermadi.kotlinsubmission2.model
 
 data class MatchsDetail(
+        var strAwayFormation : String,
+        var strHomeFormation : String,
         var idEvent : String,
         var strHomeTeam : String,
         var strAwayTeam : String,
@@ -20,5 +22,7 @@ data class MatchsDetail(
         var idAwayTeam : String,
         var intAwayScore: String,
         var intHomeScore: String,
-        var dateEvent : String
+        var dateEvent : String,
+        var strAwayGoalDetails : String,
+        var strHomeGoalDetails : String
 )

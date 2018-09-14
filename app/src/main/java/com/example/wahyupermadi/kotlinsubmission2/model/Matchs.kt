@@ -5,6 +5,6 @@ data class Matchs(
         val strHomeTeam: String,
         val strAwayTeam: String,
         val intHomeScore: String,
-        val intAwaysScore: String,
+        val intAwayScore: String,
         val dateEvent: String
 )

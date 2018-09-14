@@ -1,6 +1,5 @@
 package com.example.wahyupermadi.kotlinsubmission2.fragments
 
-import android.content.Context
 import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -8,25 +7,22 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.wahyupermadi.kotlinsubmission2.DetailNextMatchActivity
+import com.example.wahyupermadi.kotlinsubmission2.DetailMatchActivity
 import com.example.wahyupermadi.kotlinsubmission2.R
-import com.example.wahyupermadi.kotlinsubmission2.adapter.NextMatchAdapter
+import com.example.wahyupermadi.kotlinsubmission2.adapter.MatchAdapter
 import com.example.wahyupermadi.kotlinsubmission2.api.ApiClient
 import com.example.wahyupermadi.kotlinsubmission2.api.ApiInterface
 import com.example.wahyupermadi.kotlinsubmission2.model.Matchs
-import com.example.wahyupermadi.kotlinsubmission2.model.NextMatchs
-import com.example.wahyupermadi.kotlinsubmission2.model.NextMatchsDetail
-import kotlinx.android.synthetic.main.nextmatch_list.*
+import com.example.wahyupermadi.kotlinsubmission2.model.MatchsReponse
 import org.jetbrains.anko.support.v4.indeterminateProgressDialog
 import org.jetbrains.anko.support.v4.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.startActivity
 
 class NextMatchFragment : Fragment(){
-    lateinit var nextMatchAdapter : NextMatchAdapter
+    lateinit var matchAdapter : MatchAdapter
     lateinit var recyclerView: RecyclerView
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -46,18 +42,18 @@ class NextMatchFragment : Fragment(){
 
         var apiServices = ApiClient.client.create(ApiInterface::class.java)
         val call = apiServices.getNextMatch()
-        call.enqueue(object : Callback<NextMatchs>{
-            override fun onFailure(call: Call<NextMatchs>, t: Throwable) {
+        call.enqueue(object : Callback<MatchsReponse>{
+            override fun onFailure(call: Call<MatchsReponse>, t: Throwable) {
                 toast("error "+t)
                 progressBar.hide()
             }
 
-            override fun onResponse(call: Call<NextMatchs>, response: Response<NextMatchs>) {
+            override fun onResponse(call: Call<MatchsReponse>, response: Response<MatchsReponse>) {
                 var matchList: List<Matchs>? = response.body()?.events!!
-                nextMatchAdapter = NextMatchAdapter(activity!!.applicationContext, matchList){
+                matchAdapter = MatchAdapter(activity!!.applicationContext, matchList){
                     getDetail(it.idEvent)
                 }
-                recyclerView.setAdapter(nextMatchAdapter)
+                recyclerView.setAdapter(matchAdapter)
 
                 progressBar.hide()
 
@@ -67,7 +63,7 @@ class NextMatchFragment : Fragment(){
     }
 
     private fun getDetail(idEvent: String) {
-        startActivity<DetailNextMatchActivity>("id" to "${idEvent}")
+        startActivity<DetailMatchActivity>("id" to "${idEvent}")
     }
 
     companion object {

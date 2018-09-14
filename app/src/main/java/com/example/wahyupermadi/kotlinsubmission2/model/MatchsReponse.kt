@@ -1,5 +1,5 @@
 package com.example.wahyupermadi.kotlinsubmission2.model
 
-data class NextMatchs(
+data class MatchsReponse(
         var events : List<Matchs>?
 )
