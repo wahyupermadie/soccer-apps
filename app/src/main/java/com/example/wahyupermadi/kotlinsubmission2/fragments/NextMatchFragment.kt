@@ -40,7 +40,7 @@ class NextMatchFragment : Fragment(){
         val progressBar = indeterminateProgressDialog("Hello! Please wait...")
         progressBar.show()
 
-        var apiServices = ApiClient.client.create(ApiInterface::class.java)
+        val apiServices = ApiClient.client.create(ApiInterface::class.java)
         val call = apiServices.getNextMatch()
         call.enqueue(object : Callback<MatchsReponse>{
             override fun onFailure(call: Call<MatchsReponse>, t: Throwable) {

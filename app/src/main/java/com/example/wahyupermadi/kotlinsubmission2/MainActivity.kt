@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.ActionBar
+import com.example.wahyupermadi.kotlinsubmission2.fragments.FavoriteFragment
 import com.example.wahyupermadi.kotlinsubmission2.fragments.NextMatchFragment
 import com.example.wahyupermadi.kotlinsubmission2.fragments.PreviusMatchFragment
 
@@ -39,6 +40,13 @@ class MainActivity : AppCompatActivity() {
                 toolbar.title = "Football Match Schedule"
                 val prevMatch = PreviusMatchFragment.newInstance()
                 openFragment(prevMatch)
+                return@OnNavigationItemSelectedListener true
+            }
+
+            R.id.favorite -> {
+                toolbar.title = "Favortite Team"
+                val favMatch = FavoriteFragment.newInstance()
+                openFragment(favMatch)
                 return@OnNavigationItemSelectedListener true
             }
         }
