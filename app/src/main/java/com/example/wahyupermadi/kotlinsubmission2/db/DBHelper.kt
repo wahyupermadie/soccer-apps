@@ -6,7 +6,7 @@ import com.example.wahyupermadi.kotlinsubmission2.model.Team
 import org.jetbrains.anko.db.*
 import java.nio.file.attribute.FileAttributeView
 
-class DBHelper(ctx : Context) : ManagedSQLiteOpenHelper(ctx, "favoriteTeams.db", null, 1) {
+class DBHelper(ctx : Context) : ManagedSQLiteOpenHelper(ctx, "favorite.db", null, 1) {
     companion object {
         private var instance : DBHelper? = null
 

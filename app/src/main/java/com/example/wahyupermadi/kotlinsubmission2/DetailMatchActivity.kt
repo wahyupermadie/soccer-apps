@@ -93,7 +93,7 @@ class DetailMatchActivity : AppCompatActivity() {
     private fun addFavorite() {
 //        toast(""+matchDetail.get(0).strHomeTeam)
         val away  = matchDetail.get(0).strAwayTeam
-        toast(away)
+//        toast(away)
         try {
             database.use {
                 insert(Favorite.TABLE_FAVORITE,
@@ -135,6 +135,7 @@ class DetailMatchActivity : AppCompatActivity() {
                     .whereArgs("(ID_MATCH = {id})",
                             "id" to id)
             val favorite = result.parseList(classParser<Favorite>())
+            toast(""+favorite)
             if (!favorite.isEmpty()) isFavorite = true
         }
     }
@@ -186,7 +187,7 @@ class DetailMatchActivity : AppCompatActivity() {
     }
 
     private fun getImageAway(id: String) {
-        var apiServices = ApiClient.client.create(ApiInterface::class.java)
+        val apiServices = ApiClient.client.create(ApiInterface::class.java)
         val call = apiServices.getTeamDetail(id)
         call.enqueue(object : Callback<TeamResponse>{
             override fun onFailure(call: Call<TeamResponse>, t: Throwable) {
@@ -203,7 +204,7 @@ class DetailMatchActivity : AppCompatActivity() {
     }
 
     private fun getImageHome(id: String) {
-        var apiServices = ApiClient.client.create(ApiInterface::class.java)
+        val apiServices = ApiClient.client.create(ApiInterface::class.java)
         val call = apiServices.getTeamDetail(id)
         call.enqueue(object : Callback<TeamResponse>{
             override fun onFailure(call: Call<TeamResponse>, t: Throwable) {
