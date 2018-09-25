@@ -91,36 +91,15 @@ class DetailMatchActivity : AppCompatActivity() {
     }
 
     private fun addFavorite() {
-//        toast(""+matchDetail.get(0).strHomeTeam)
-        val away  = matchDetail.get(0).strAwayTeam
-//        toast(away)
         try {
             database.use {
                 insert(Favorite.TABLE_FAVORITE,
                         Favorite.ID_MATCH to matchDetail.get(0).idEvent,
-                        Favorite.DATE_EVENT to matchDetail.get(0).dateEvent,
-                        Favorite.AWAY_DEFF to matchDetail.get(0).strAwayLineupDefense,
-                        Favorite.HOME_DEFF to matchDetail.get(0).strHomeLineupDefense,
-                        Favorite.HOME_SHOT to matchDetail.get(0).intHomeShots,
-                        Favorite.AWAY_SHOT to matchDetail.get(0).intAwayShots,
                         Favorite.AWAY_TEAM to matchDetail.get(0).strAwayTeam,
                         Favorite.HOME_TEAM to matchDetail.get(0).strHomeTeam,
                         Favorite.HOME_SCORE to matchDetail.get(0).intHomeScore,
                         Favorite.AWAY_SCORE to matchDetail.get(0).intAwayScore,
-                        Favorite.AWAY_ID to matchDetail.get(0).idAwayTeam,
-                        Favorite.HOME_ID to matchDetail.get(0).idHomeTeam,
-                        Favorite.HOME_MIDFIELD to matchDetail.get(0).strHomeLineupMidfield,
-                        Favorite.AWAY_MIDFIELD to matchDetail.get(0).strAwayLineupMidfield,
-                        Favorite.HOME_GOALKEEPER to matchDetail.get(0).strHomeLineupGoalkeeper,
-                        Favorite.AWAY_GOALKEEPER to matchDetail.get(0).strAwayLineupGoalkeeper,
-                        Favorite.HOME_GOALDET to matchDetail.get(0).strHomeGoalDetails,
-                        Favorite.AWAY_GOALDET to matchDetail.get(0).strAwayGoalDetails,
-                        Favorite.HOME_FORWARD to matchDetail.get(0).strHomeLineupForward,
-                        Favorite.AWAY_FORWARD to matchDetail.get(0).strAwayLineupForward,
-                        Favorite.HOME_FORMATION to matchDetail.get(0).strHomeFormation,
-                        Favorite.AWAY_FORMATION to matchDetail.get(0).strAwayFormation,
-                        Favorite.HOME_SUBS to matchDetail.get(0).strHomeLineupSubstitutes,
-                        Favorite.AWAY_SUBS to matchDetail.get(0).strAwayLineupSubstitutes
+                        Favorite.EVENT_DATE to matchDetail.get(0).dateEvent
                 )
             }
             toast("added favorite")
@@ -135,12 +114,11 @@ class DetailMatchActivity : AppCompatActivity() {
                     .whereArgs("(ID_MATCH = {id})",
                             "id" to id)
             val favorite = result.parseList(classParser<Favorite>())
-            toast(""+favorite)
             if (!favorite.isEmpty()) isFavorite = true
         }
     }
 
-    private fun init() {
+    fun init() {
 
         val intent = intent
         val id = intent.getStringExtra("id")

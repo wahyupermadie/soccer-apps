@@ -1,6 +1,7 @@
 package com.example.wahyupermadi.kotlinsubmission2.api
 
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiClient {
@@ -14,6 +15,7 @@ class ApiClient {
                     retrofit = Retrofit.Builder()
                             .baseUrl(baseURL)
                             .addConverterFactory(GsonConverterFactory.create())
+                            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                             .build()
                 }
                 return retrofit!!

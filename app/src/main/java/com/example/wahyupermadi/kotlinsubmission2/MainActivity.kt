@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.ActionBar
 import com.example.wahyupermadi.kotlinsubmission2.fragments.FavoriteFragment
 import com.example.wahyupermadi.kotlinsubmission2.fragments.NextMatchFragment
-import com.example.wahyupermadi.kotlinsubmission2.fragments.PreviusMatchFragment
+import com.example.wahyupermadi.kotlinsubmission2.fragments.previewsmatch.PreviusMatchFragment
 
 class MainActivity : AppCompatActivity() {
     lateinit var toolbar: ActionBar

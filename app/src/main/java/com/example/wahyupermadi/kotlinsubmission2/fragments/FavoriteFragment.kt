@@ -10,12 +10,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.wahyupermadi.footballteam.adapter.FavoriteAdapter
+import com.example.wahyupermadi.kotlinsubmission2.DetailMatchActivity
 import com.example.wahyupermadi.kotlinsubmission2.R
 import com.example.wahyupermadi.kotlinsubmission2.db.Favorite
 import com.example.wahyupermadi.kotlinsubmission2.db.database
 import kotlinx.android.synthetic.main.fragment_favorite.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
+import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 
 class FavoriteFragment : Fragment(){
@@ -38,7 +40,7 @@ class FavoriteFragment : Fragment(){
             favorites.addAll(favorite)
             rv_favorite.layoutManager = LinearLayoutManager(context)
             rv_favorite.adapter = FavoriteAdapter(context,favorites){
-                toast(""+it.strHomeTeam)
+                startActivity<DetailMatchActivity>("id" to "${it.id_match}")
             }
         }
     }

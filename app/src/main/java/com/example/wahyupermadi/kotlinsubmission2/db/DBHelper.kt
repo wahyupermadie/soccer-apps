@@ -6,7 +6,7 @@ import com.example.wahyupermadi.kotlinsubmission2.model.Team
 import org.jetbrains.anko.db.*
 import java.nio.file.attribute.FileAttributeView
 
-class DBHelper(ctx : Context) : ManagedSQLiteOpenHelper(ctx, "favorite.db", null, 1) {
+class DBHelper(ctx : Context) : ManagedSQLiteOpenHelper(ctx, "db_favorite.db", null, 1) {
     companion object {
         private var instance : DBHelper? = null
 
@@ -15,36 +15,18 @@ class DBHelper(ctx : Context) : ManagedSQLiteOpenHelper(ctx, "favorite.db", null
             if(instance == null){
                 instance = DBHelper(ctx.applicationContext)
             }
-            return instance!!
+            return instance as DBHelper
         }
     }
     override fun onCreate(db: SQLiteDatabase?) {
         db?.createTable(Favorite.TABLE_FAVORITE, true,
                 Favorite.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
                 Favorite.ID_MATCH to TEXT + UNIQUE,
-                Favorite.AWAY_DEFF to TEXT,
-                Favorite.HOME_DEFF to TEXT,
-                Favorite.AWAY_FORMATION to TEXT,
-                Favorite.HOME_FORMATION to TEXT,
-                Favorite.AWAY_FORWARD to TEXT,
-                Favorite.HOME_FORWARD to TEXT,
-                Favorite.AWAY_GOALDET to TEXT,
-                Favorite.HOME_GOALDET to TEXT,
-                Favorite.AWAY_GOALKEEPER to TEXT,
-                Favorite.HOME_GOALKEEPER to TEXT,
-                Favorite.AWAY_MIDFIELD to TEXT,
-                Favorite.HOME_MIDFIELD to TEXT,
-                Favorite.AWAY_ID to TEXT,
-                Favorite.HOME_ID to TEXT,
-                Favorite.AWAY_SCORE to TEXT,
-                Favorite.HOME_SCORE to TEXT,
                 Favorite.HOME_TEAM to TEXT,
                 Favorite.AWAY_TEAM to TEXT,
-                Favorite.AWAY_SHOT to TEXT,
-                Favorite.HOME_SHOT to TEXT,
-                Favorite.DATE_EVENT to TEXT,
-                Favorite.HOME_SUBS to TEXT,
-                Favorite.AWAY_SUBS to TEXT
+                Favorite.EVENT_DATE to TEXT,
+                Favorite.AWAY_SCORE to TEXT,
+                Favorite.HOME_SCORE to TEXT
         )
     }
 

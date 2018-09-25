@@ -9,7 +9,7 @@ import com.example.wahyupermadi.kotlinsubmission2.R
 import com.example.wahyupermadi.kotlinsubmission2.model.Matchs
 import kotlinx.android.synthetic.main.nextmatch_list.view.*
 
-class MatchAdapter (private val context: Context, private val matchs: List<Matchs>?, private val listener: (Matchs) -> Unit) : RecyclerView.Adapter<MatchsViewHolder>() {
+class MatchAdapter (private val context: Context?, private val matchs: List<Matchs>?, private val listener: (Matchs) -> Unit) : RecyclerView.Adapter<MatchsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             MatchsViewHolder(LayoutInflater.from(context).inflate(R.layout.nextmatch_list, parent, false))

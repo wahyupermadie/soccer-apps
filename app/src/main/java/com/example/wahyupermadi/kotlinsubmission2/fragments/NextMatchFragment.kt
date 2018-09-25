@@ -51,7 +51,7 @@ class NextMatchFragment : Fragment(){
             override fun onResponse(call: Call<MatchsReponse>, response: Response<MatchsReponse>) {
                 var matchList: List<Matchs>? = response.body()?.events!!
                 matchAdapter = MatchAdapter(activity!!.applicationContext, matchList){
-                    getDetail(it.idEvent)
+                    getDetail(it.idEvent!!)
                 }
                 recyclerView.setAdapter(matchAdapter)
 

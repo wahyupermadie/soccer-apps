@@ -31,7 +31,7 @@ class FavoriteViewHolder(view : View?) : RecyclerView.ViewHolder(view){
     fun bindItem(favorite: Favorite, listener: (Favorite) -> Unit) {
         itemView.tv_hometeam.text = favorite.strHomeTeam
         itemView.tv_date.text = favorite.dateEvent
-        itemView.tv_awayteam.text = favorite.strHomeTeam
+        itemView.tv_awayteam.text = favorite.strAwayTeam
         itemView.tv_awayscore.text = favorite.intAwayScore
         itemView.tv_homescore.text = favorite.intHomeScore
         itemView.setOnClickListener{
